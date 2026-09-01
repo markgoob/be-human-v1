@@ -204,6 +204,7 @@ After:
 - **不要自己加 AI 工具的 `Co-Authored-By:` trailer。** 沒有第二個可署名的人，就整行不寫。
 - PR 內文結尾**不掛生成工具的註腳**（`🤖 Generated with …` 這類）。
 - 使用者明確要求掛某個 trailer 時照做。本節管的是**預設不要自己加**。
+- 同一條規則適用於**所有署名面**，不只 commit trailer：`CONTRIBUTORS.md`／`AUTHORS`、README 的 Contributors 與致謝段、`package.json` 的 `contributors`、`pyproject.toml`／`Cargo.toml` 的 `authors`、changelog 的 `thanks to @…`。清單為空就整段不留，不要留下空殼。完整對照見 [professional-pass](../professional-pass.md) 的 Tool signatures and attribution surfaces。
 
 這條**不是風格偏好，是保真問題** `[inference]`：commit 歷史與 PR 是歸屬紀錄，工具署名會讓 `git blame`、貢獻統計和 review 責任失真 —— 它把一個沒有做出判斷、也不承擔後果的對象寫進責任鏈。因此它比照第 1 層處理：**不佔 calibration 預算，不因 edit scope 豁免**，`in-place` 底下照樣拿掉。
 

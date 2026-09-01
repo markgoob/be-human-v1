@@ -71,17 +71,26 @@ Replacements, in order of preference: the repo-relative form (`python tool.py`),
 
 This is a **per-instance correctness finding, not a density judgment**: one bad path is one defect. Do not give it a Tier number and do not wait for a cluster. Evidence class is editorial heuristic from observed cases; nothing measured stands behind it.
 
-### Tool signatures and authorship trailers `[inference]`
+### Tool signatures and attribution surfaces `[inference]`
 
-A generator's own signature left in the artifact is the purest form of check-1 residue, and it is the one form that carries a consequence beyond style:
+A generator's own signature left in the artifact is the purest form of check-1 residue, and it is the one form that carries a consequence beyond style.
 
-- `🤖 Generated with …` footers in a PR body or a commit message.
-- `Co-Authored-By:` trailers naming an AI tool.
-- 「本文由 AI 協助撰寫」 style disclaimers appended by habit rather than by a venue that requires them.
+**Every attribution surface is in scope**, not just the commit trailer:
 
-**Default: remove them.** `Co-Authored-By:` lists **real people only** — the configured git author, the signed-in account, or a collaborator the user actually named. With no second human to credit, the line does not exist.
+| 面 | 具體形態 |
+|---|---|
+| commit trailer | `Co-Authored-By:` naming an AI tool |
+| PR ／ issue 內文 | `🤖 Generated with …` footers |
+| 貢獻者名單 | `CONTRIBUTORS.md`、`AUTHORS`、README 的 Contributors／Acknowledgements 段 |
+| 套件中繼資料 | `package.json` 的 `contributors`、`pyproject.toml` 的 `authors`、`Cargo.toml` 的 `authors`、gem／nuget 的對應欄位 |
+| changelog ／ 發布說明 | `thanks to @…`、致謝段、`Contributors to this release` |
+| 文件署名 | 「本文由 AI 協助撰寫」這類憑習慣附上、而非場地要求的聲明 |
 
-Why this is a fidelity matter and not a taste one: commit history and PR metadata are an **attribution record**. A tool trailer writes into the responsibility chain an entity that made no judgment and carries no consequence, and it distorts `git blame`, contribution statistics, and who is accountable at review. So it is handled like Layer 1 correctness — **it does not consume a calibration move, and no edit scope exempts it**, `in-place` included.
+**Default: remove them, on every surface.** These lists carry **real people only** — the configured git author, the signed-in account, or a collaborator the user actually named. With nobody to credit, the line, the field, or the section does not exist; do not leave an empty scaffold behind.
+
+Why this is a fidelity matter and not a taste one: an attribution surface is a **record of who can be credited, contacted, and held responsible**. A tool has no standing in any of the three. Writing one in puts an entity that made no judgment and carries no consequence into the responsibility chain, and it distorts `git blame`, contribution graphs, package ownership, and who answers at review. So it is handled like Layer 1 correctness — **it does not consume a calibration move, and no edit scope exempts it**, `in-place` included.
+
+**Already-published artifacts.** When the surface is already public — a pushed commit, a released package, a merged changelog — removing it is a **history or metadata change, not a text edit**. Report it, say what fixing it costs (a force-push, a patch release), and let the user decide. Do not rewrite published history as part of a writing pass.
 
 Two limits on this rule:
 
