@@ -60,19 +60,19 @@ A bilingual (Taiwan Traditional Chinese + English) de-AI writing skill, covering
 
 ## 安裝
 
-複製整個目錄到 skills 目錄底下：
+clone 之後把整個目錄放進 skills 目錄：
 
 ```bash
-cp -r be-human-v1 ~/.claude/skills/
+git clone https://github.com/markgoob/be-human-v1.git && cp -r be-human-v1 ~/.claude/skills/
 ```
 
-Windows（PowerShell）：
+Windows（PowerShell）—— 注意 Git Bash 的 `~` 不一定指向 `C:\Users\<你>`，用 `$env:USERPROFILE` 比較保險：
 
 ```powershell
-Copy-Item -Recurse be-human-v1 "$env:USERPROFILE\.claude\skills\"
+git clone https://github.com/markgoob/be-human-v1.git; Copy-Item -Recurse be-human-v1 "$env:USERPROFILE\.claude\skills\"
 ```
 
-新 skill 在執行中的工作階段立即生效，不必重開。
+目錄名要維持 `be-human-v1`，與 `SKILL.md` 的 `name` 一致。新 skill 在執行中的工作階段立即生效，不必重開。
 
 ## 證據邊界
 
