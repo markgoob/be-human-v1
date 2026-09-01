@@ -54,7 +54,7 @@
 | `structures.md` | 逐條合併 sepia 的英文文法條目並加語言標籤；第 18 條補上 edit scope 降級梯；新增檔案層級的 scope 聲明 |
 | `severity.md` | 新增「計數約定」一節；第 11 條改寫，ZH-matrix 內的英文改判語言路由第 5 節 |
 | `scene-guardrails.md` | 新增 `fiction` 場景的禁改條款（該場景是本次合併新增的） |
-| `packs/_scene-packs-zh.md` | README 包新增「保留路徑不等於保留錯的路徑」條款，接到 professional-pass 的 check 11 |
+| `packs/_scene-packs-zh.md` | README 包新增「保留路徑不等於保留錯的路徑」條款，接到 professional-pass 的 check 11；**新增 `commit-message` 場景包**（commit 訊息與 PR 內文，含硬性署名規則），此包兩個上游都沒有 |
 | `evals/real-samples.md` | 僅修正一處簡繁過度轉換（`一箇`→`一個`） |
 
 全部檔案先前已由簡體轉為臺灣繁體，並修正過度轉換與選字錯誤。2026-09-01 又補修三處殘留（`一箇` 兩處、`隻是` 一處）。
@@ -73,7 +73,7 @@
 | `references/discourse-pass.md` | 新增禁用於中文的 SCOPE 聲明（§5 英文人名清單完全不跑中文）；§1 與 §2 的新增型處方加上 operation gate；§2 對非虛構的延伸限縮到診斷半邊 |
 | `references/fiction/rubric.md` | 新增禁用於中文的 SCOPE 聲明；報告標頭改為 be-human；保留其禁止加總條款不動 |
 | `references/fiction/model-fingerprints.md` | 新增禁用於中文的範圍聲明 |
-| `references/professional-pass.md` | 改為雙語；改用 Tier 門檻取代定性說法；加入語料取樣與第 1 層的互動條款；**新增 check 11 可攜性**（絕對路徑只在作者機器上成立），此條兩個上游都沒有 |
+| `references/professional-pass.md` | 改為雙語；改用 Tier 門檻取代定性說法；加入語料取樣與第 1 層的互動條款；**新增 check 11 可攜性**（絕對路徑只在作者機器上成立）與**工具署名／署名 trailer 專節**，這兩條兩個上游都沒有 |
 
 `references/phrases-en.md` 是**兩個上游合併**而成，不單屬 sepia：Tier 骨架與專業文體條目來自 shuorenhua 的 `phrases-en.md`（MIT，MrGeDiao），詞彙內容以 sepia 的 `style-pass.md` 為主（MIT，Nanako Tsai）。兩份都是 MIT，具名時兩位都要列。
 

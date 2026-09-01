@@ -1,6 +1,6 @@
 ---
 name: be-human-v1
-description: 雙語（臺灣繁體中文與英文）去 AI 味寫作與改寫規範，涵蓋小說與專業文體，以保真為底線。第一層規範臺灣繁體用語與標點，任何以繁體中文產出連續文字的任務都必須套用，禁止中國大陸用語（如「視頻」「軟件」「信息」）與網路黑話（如「落地」「復盤」「閉環」）。第二層是完整的去 AI 味框架：按場景（chat / status / docs / public-writing / fiction）控制力度與刪除授權，清理模板感、收束腔、工程師腔、小紅書 AI 腔、翻譯腔、無源權威鋪墊，並修復小說的敘事架構（結局能動性、因果鏈、情緒模式、人物網路）。四種操作：write、review（只標問題不改寫）、refactor（最小幅度原地修改）、recreate（完全重寫）。觸發詞包括：去 AI 味、說人話、自然一點、太像 AI、別像模板、先標問題、改寫、潤稿、翻譯、支語、臺灣用語、標點、humanize、de-AI、unslop、make this sound human；也用於撰寫或修訂發布說明、changelog、README、issue 與 PR 回覆、程式碼審查意見、事故檢討報告、工單、技術文章、API 文件、FAQ、論壇貼文，以及任何不能讀起來像機器寫的文字。純程式碼、表格資料、或使用者明確要求條列摘要的任務除外。
+description: 雙語（臺灣繁體中文與英文）去 AI 味寫作與改寫規範，涵蓋小說與專業文體，以保真為底線。第一層規範臺灣繁體用語與標點，任何以繁體中文產出連續文字的任務都必須套用，禁止中國大陸用語（如「視頻」「軟件」「信息」）與網路黑話（如「落地」「復盤」「閉環」）。第二層是完整的去 AI 味框架：按場景（chat / status / docs / public-writing / fiction）控制力度與刪除授權，清理模板感、收束腔、工程師腔、小紅書 AI 腔、翻譯腔、無源權威鋪墊，並修復小說的敘事架構（結局能動性、因果鏈、情緒模式、人物網路）。四種操作：write、review（只標問題不改寫）、refactor（最小幅度原地修改）、recreate（完全重寫）。觸發詞包括：去 AI 味、說人話、自然一點、太像 AI、別像模板、先標問題、改寫、潤稿、翻譯、支語、臺灣用語、標點、humanize、de-AI、unslop、make this sound human；也用於撰寫或修訂發布說明、changelog、README、issue 與 PR 回覆、commit 訊息與 PR 內文、程式碼審查意見、事故檢討報告、工單、技術文章、API 文件、FAQ、論壇貼文，以及任何不能讀起來像機器寫的文字。commit 與 PR 的署名規則是硬性的：Co-Authored-By 只列真人，不自己加 AI 工具 trailer，不掛生成工具註腳。純程式碼、表格資料、或使用者明確要求條列摘要的任務除外。
 license: CC-BY-SA-4.0
 metadata:
   version: "1.0.0"
@@ -125,11 +125,13 @@ metadata:
 
 文字本身命中就要補看，不依賴使用者是否明說，也不受主場景初判限制：
 
-`README`、`release-note`、`forum-post`、`issue-reply`（含 PR 回覆與程式碼審查意見）、`api-reference`、`faq`、`postmortem`、`ticket`（工單、需求單）、`tech-article`。
+`README`、`release-note`、`forum-post`、`issue-reply`（含 PR 回覆與程式碼審查意見）、`commit-message`（含 PR 內文）、`api-reference`、`faq`、`postmortem`、`ticket`（工單、需求單）、`tech-article`。
 
 中文包見 [`packs/_scene-packs-zh.md`](./references/packs/_scene-packs-zh.md) 與 `packs/zh-*.md`；英文包見 `packs/en-*.md`（`release-note`、`issue-reply`、`postmortem`、`ticket`、`tech-article` 五個）。
 
-`README`、`forum-post`、`api-reference`、`faq` 目前只有一份包，收在 `_scene-packs-zh.md` 裡。**它的結構指引語言中性，兩種語言都適用**，只有用詞跟著母體語言走 —— 英文文字命中這四個場景時照樣要讀它，不要因為檔名有 `zh` 就跳過。
+`README`、`forum-post`、`commit-message`、`api-reference`、`faq` 目前只有一份包，收在 `_scene-packs-zh.md` 裡。**它的結構指引語言中性，兩種語言都適用**，只有用詞跟著母體語言走 —— 英文文字命中這五個場景時照樣要讀它，不要因為檔名有 `zh` 就跳過。
+
+`commit-message` 包裡的**署名規則是硬性的**：`Co-Authored-By:` 只列真人，不自己加 AI 工具的 trailer，PR 內文不掛生成工具註腳。那是歸屬紀錄的保真問題 —— 把一個沒做出判斷、也不承擔後果的對象寫進責任鏈 —— 所以不佔 calibration 預算，也不因 edit scope 豁免。
 
 **中文的事故檢討、工單、技術文章、程式碼審查意見是合併新增的**，寫法是把英文包的結構骨架（時間線、失效機制、行動項、驗收條件）原樣拿來，用詞則走臺灣用語 —— 不是翻譯英文包。直接翻譯會從事故詞彙把支語走後門帶進來：復盤→事後檢討、根因→根本原因、對齊→同步、落地→實作、顆粒度→細緻程度。`RCA`、`SLA`、`P0`、`blocking` 這類保留英文。
 

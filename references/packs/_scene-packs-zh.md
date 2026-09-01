@@ -183,6 +183,61 @@ After:
 
 > 收到，這個 case 我能復現。它屬於 `docs` 場景裡的誤殺，下一版先補一條 SNF；如果現有規則已經能放行，就只加迴歸用例。
 
+## `commit-message`
+
+涵蓋 commit 訊息與 PR 內文。
+
+預設目標：
+
+- 第一行說清楚**改了什麼**，不是改了哪些檔案。
+- 內文寫**為什麼要改、為什麼是這個做法**，不是把 diff 用散文重講一遍。
+
+必須保留：
+
+- 檔案路徑、函式名、issue／PR 編號、版本號、錯誤訊息原文
+- 破壞性變更與遷移步驟
+- 實際的行為差異
+
+### 署名（硬性規則）
+
+- `Co-Authored-By:` **只列真人** —— git 設定裡的作者、GitHub 登入者，或使用者在該次對話中實際指名的協作者。
+- **不要自己加 AI 工具的 `Co-Authored-By:` trailer。** 沒有第二個可署名的人，就整行不寫。
+- PR 內文結尾**不掛生成工具的註腳**（`🤖 Generated with …` 這類）。
+- 使用者明確要求掛某個 trailer 時照做。本節管的是**預設不要自己加**。
+
+這條**不是風格偏好，是保真問題** `[inference]`：commit 歷史與 PR 是歸屬紀錄，工具署名會讓 `git blame`、貢獻統計和 review 責任失真 —— 它把一個沒有做出判斷、也不承擔後果的對象寫進責任鏈。因此它比照第 1 層處理：**不佔 calibration 預算，不因 edit scope 豁免**，`in-place` 底下照樣拿掉。
+
+優先刪除：
+
+- `本次提交旨在……`、`為了提升程式碼品質` 這類把 diff 重講一遍的開場
+- `優化了相關邏輯`、`完善了部分功能` 這種沒有具體物件的說法
+- 生成工具的註腳與 AI co-author trailer
+- 結尾的 `歡迎 review`、`有問題請隨時提出`
+
+預設力度：
+
+- `minimal`
+- commit 訊息本來就短。這裡的病灶多半是「說了等於沒說」，不是「話太多」
+
+誤殺邊界：
+
+- 一行的 commit 訊息完全正常，不要為了「更完整」硬加內文
+- `fix` / `chore` / `refactor` 這類 conventional commits 前綴是慣例，不是模板感
+- revert、merge、release 的自動產生訊息照原樣，不要改寫
+- 引用的錯誤訊息、堆疊、指令照原樣
+
+Before:
+
+> 本次提交旨在對專案的路徑處理邏輯進行優化，提升了程式碼的健壯性與可維護性。
+>
+> Co-Authored-By: Claude Opus 5 &lt;noreply@anthropic.com&gt;
+>
+> 🤖 Generated with Claude Code
+
+After:
+
+> 路徑改回 repo 相對：CLI 範例寫死作者的 clone 位置，別人照著打會失敗
+
 ## `api-reference`
 
 預設目標：

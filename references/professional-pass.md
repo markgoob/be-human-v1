@@ -37,7 +37,7 @@ Density is **cumulative**: one hit is not a verdict, and the count is what decid
 
 | # | Check | What to hunt |
 |---|---|---|
-| 1 | Chatbot residue | EN: "Great question", "Thanks for raising this!", "I hope this helps", "Certainly!", "You're absolutely right", apology openers, offers of further help, "Let's dive in". ZH `[inference]`: 「好問題」「感謝提出」「希望這對你有幫助」「當然可以！」「你說得完全正確」「讓我們一起來看看」. Delete — a colleague does not talk like a support desk. |
+| 1 | Chatbot residue | EN: "Great question", "Thanks for raising this!", "I hope this helps", "Certainly!", "You're absolutely right", apology openers, offers of further help, "Let's dive in". ZH `[inference]`: 「好問題」「感謝提出」「希望這對你有幫助」「當然可以！」「你說得完全正確」「讓我們一起來看看」. Delete — a colleague does not talk like a support desk. **Tool signatures count as residue**: `🤖 Generated with …` footers and AI `Co-Authored-By:` trailers — see the note below. |
 | 2 | Density | Could this say the same at half the length? Statements true in any context carry zero information — EN "in today's fast-paced world", "it's important to note"; ZH 「在當今快速變化的環境下」「值得注意的是」. Length must be proportional to stakes. |
 | 3 | Relevance | Does every paragraph serve *the reader's task* — the thing they opened this to find out? Background the reader already has, restated questions, and scope tours are filler. |
 | 4 | Stance | Where a judgment is required, commit to one. Absent subjectivity is a measured slop dimension (S) `[grounded]`: a review with no verdict, a comparison with no recommendation, a postmortem with no admitted mistake. Hedge once per genuinely fragile claim, not once per sentence. |
@@ -70,6 +70,25 @@ Replacements, in order of preference: the repo-relative form (`python tool.py`),
 **回讀檢查**：搜尋磁碟機代號、`~`、`/home/`、`/Users/`、主機名。每一處問同一個問題 —— 這個位置是平台定的，還是作者定的？只有前者留下。
 
 This is a **per-instance correctness finding, not a density judgment**: one bad path is one defect. Do not give it a Tier number and do not wait for a cluster. Evidence class is editorial heuristic from observed cases; nothing measured stands behind it.
+
+### Tool signatures and authorship trailers `[inference]`
+
+A generator's own signature left in the artifact is the purest form of check-1 residue, and it is the one form that carries a consequence beyond style:
+
+- `🤖 Generated with …` footers in a PR body or a commit message.
+- `Co-Authored-By:` trailers naming an AI tool.
+- 「本文由 AI 協助撰寫」 style disclaimers appended by habit rather than by a venue that requires them.
+
+**Default: remove them.** `Co-Authored-By:` lists **real people only** — the configured git author, the signed-in account, or a collaborator the user actually named. With no second human to credit, the line does not exist.
+
+Why this is a fidelity matter and not a taste one: commit history and PR metadata are an **attribution record**. A tool trailer writes into the responsibility chain an entity that made no judgment and carries no consequence, and it distorts `git blame`, contribution statistics, and who is accountable at review. So it is handled like Layer 1 correctness — **it does not consume a calibration move, and no edit scope exempts it**, `in-place` included.
+
+Two limits on this rule:
+
+- **The user's own instruction wins.** If they ask for a specific trailer or disclaimer, add it. This rule governs what you attach *by default*.
+- **A venue that genuinely requires disclosure gets the disclosure.** Some journals, contests, and employers mandate an AI-use statement. That is a venue requirement, not residue — keep it, and keep it where the venue puts it.
+
+Full venue rules in [`packs/_scene-packs-zh.md`](./packs/_scene-packs-zh.md) `commit-message`.
 
 Then finish with the vocabulary and syntax scan, routed by matrix language: EN-matrix spans → [`style-pass.md`](./style-pass.md) §2–3 (the ban tables apply to professional prose; the fiction-slop row does not); ZH-matrix spans → [`phrases-zh.md`](./phrases-zh.md) and [`structures.md`](./structures.md).
 
